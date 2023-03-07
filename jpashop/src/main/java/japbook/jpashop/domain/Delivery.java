@@ -16,7 +16,7 @@ public class Delivery {
     private Long id;
 
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Order order;
 
     @Embedded
