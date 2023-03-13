@@ -50,7 +50,7 @@ public class OrderServiceTest {
         assertEquals("상품 주문시 상태는 ORDER", OrderStatus.ORDER, getOrder.getStatus());
         assertEquals("주문한 상품 종류 수가 정확해야 한다.",1,getOrder.getOrderItems().size());
         assertEquals("주문 가격은 가격 * 수량이다.", 10000 * orderCount, getOrder.getTotalPrice());
-        assertEquals("주문 수량만큼 재고가 줄어야한다.", 8, book.getStockQuantitiy());
+        assertEquals("주문 수량만큼 재고가 줄어야한다.", 8, book.getStockQuantity());
     }
 
     @Test
@@ -70,7 +70,7 @@ public class OrderServiceTest {
         Order getOrder = orderRepository.findOne(orderId);
 
         assertEquals("주문 취소시 상태는 CALCEL 이다.", OrderStatus.CANCEL, getOrder.getStatus());
-        assertEquals("주문이 취소된 상품은 그만큼 재고가 증가해야 한다.", 10, item.getStockQuantitiy());
+        assertEquals("주문이 취소된 상품은 그만큼 재고가 증가해야 한다.", 10, item.getStockQuantity());
     }
 
     @Test(expected = NotEnoughStockException.class)
@@ -92,7 +92,7 @@ public class OrderServiceTest {
         Book book = new Book();
         book.setName(name);
         book.setPrice(price);
-        book.setStockQuantitiy(quantity);
+        book.setStockQuantity(quantity);
         em.persist(book);
         return book;
     }
